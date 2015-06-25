@@ -1,4 +1,4 @@
-# bettergiphy
+# slack-bettergiphy
 
 Installation:
 
