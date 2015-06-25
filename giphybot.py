@@ -4,11 +4,13 @@ import urllib2
 
 app = Flask(__name__)  
 giphyurl = "http://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&limit=1&rating=g&q="  
+
+slacktoken = "INSERT-SLACK-TOKEN-HERE"
 slackhookurl = "INSERT-SLACK-WEBHOOK-URL-HERE"
 
 @app.route("/", methods=['POST'])
 def root():
-  if request.form['token'] == "INSERT-SLACK-TOKEN-HERE":
+  if request.form['token'] == slacktoken:
     searchtext = request.form['text'].replace(" ","+")
     return_string = query_giphy(searchtext)
   else:
@@ -27,7 +29,7 @@ def query_giphy(searchtext):
   return returnresponse
 
 def parse_results(jsonresponse):
-  user = request.form['user_id']
+  user = request.form['user_name']
   channel = request.form['channel_id']
   searchstring = '/giphy++ ' + request.form['text']
   jsondict = json.loads(jsonresponse)

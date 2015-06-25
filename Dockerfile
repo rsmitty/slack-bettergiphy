@@ -5,7 +5,8 @@ ENV APPDIR /app
 WORKDIR $APPDIR
 
 RUN apt-get update
-RUN apt-get install -y python-pip
-RUN pip install Flask gunicorn
-ADD app.py /app/app.py
+RUN apt-get install -y python-flask
+ADD giphybot.py /app/giphybot.py
 EXPOSE 5000
+CMD python giphybot.py
+
