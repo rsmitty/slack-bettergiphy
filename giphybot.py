@@ -4,6 +4,7 @@ import urllib2
 
 app = Flask(__name__)  
 giphyurl = "http://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&limit=1&rating=g&q="  
+slackhookurl = "INSERT-SLACK-WEBHOOK-URL-HERE"
 
 @app.route("/", methods=['POST'])
 def root():
@@ -13,7 +14,7 @@ def root():
   else:
     return_string = "Something is broken!"
 
-  req = urllib2.Request('https://hooks.slack.com/services/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')
+  req = urllib2.Request(slackhookurl)
   req.add_header('Content-Type', 'application/json')
   response = urllib2.urlopen(req, return_string)
   return ""
