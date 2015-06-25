@@ -1,5 +1,7 @@
 # slack-bettergiphy
 
+A bot for Slack that will retrieve a single, relevant result from giphy, as opposed to the random pick that the built-in bot does.
+
 Installation:
 
 - Git clone this directory.
